@@ -10,7 +10,7 @@ def fetch_and_parse(url)
 end
 
 usd_prices = {
-  'BCH'  => fetch_and_parse('https://api.cryptowat.ch/markets/kraken/bchusd/price').to_s)['result']['price'],
+  'BCH'  => fetch_and_parse('https://api.cryptowat.ch/markets/kraken/bchusd/price')['result']['price'],
   'BTC'  => fetch_and_parse('https://apiv2.bitcoinaverage.com/exchanges/gdax')['symbols']['BTCUSD']['last'],
   'DASH' => fetch_and_parse('https://api.cryptowat.ch/markets/kraken/dashusd/price')['result']['price'],
   'ETH'  => fetch_and_parse('https://apiv2.bitcoinaverage.com/exchanges/gdax')['symbols']['ETHUSD']['last'],
