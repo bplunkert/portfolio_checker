@@ -6,6 +6,7 @@ require 'json'
 balances = JSON.parse(File.read('balances.json'))
 
 usd_prices = {
+  'BCH'  => JSON.parse(HTTParty.get('https://api.cryptowat.ch/markets/kraken/bchusd/price').to_s)['result']['price'],
   'BTC'  => JSON.parse(HTTParty.get('https://apiv2.bitcoinaverage.com/exchanges/gdax').to_s)['symbols']['BTCUSD']['last'],
   'DASH' => JSON.parse(HTTParty.get('https://api.cryptowat.ch/markets/kraken/dashusd/price').to_s)['result']['price'],
   'ETH'  => JSON.parse(HTTParty.get('https://apiv2.bitcoinaverage.com/exchanges/gdax').to_s)['symbols']['ETHUSD']['last'],
