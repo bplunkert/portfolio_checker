@@ -10,8 +10,6 @@ usd_prices = {
   'DASH' => JSON.parse(HTTParty.get('https://api.cryptowat.ch/markets/kraken/dashusd/price').to_s)['result']['price'],
   'ETH'  => JSON.parse(HTTParty.get('https://apiv2.bitcoinaverage.com/exchanges/gdax').to_s)['symbols']['ETHUSD']['last'],
   'LTC'  => JSON.parse(HTTParty.get('https://api.cryptowat.ch/markets/kraken/ltcusd/price').to_s)['result']['price'],
-  'NMC'  => JSON.parse(HTTParty.get('https://api.cryptowat.ch/markets/btce/nmcusd/price').to_s)['result']['price'],
-  'PPC'  => JSON.parse(HTTParty.get('https://btc-e.com/api/3/ticker/ppc_usd').to_s)['ppc_usd']['last'],
   'XMR'  => JSON.parse(HTTParty.get('https://api.cryptowat.ch/markets/kraken/xmrusd/price').to_s)['result']['price']
 }
 
