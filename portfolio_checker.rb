@@ -6,7 +6,9 @@ require 'json'
 balances = JSON.parse(File.read('balances.json'))
 
 def fetch_and_parse(exchange, symbol)
-  JSON.parse(Net::HTTP.get(URI("https://api.cryptowat.ch/markets/#{exchange}/#{symbol}usd/price")))['result']['price']
+  answer = JSON.parse(Net::HTTP.get(URI("https://api.cryptowat.ch/markets/#{exchange}/#{symbol}usd/price")))
+  abort "don't spam cryptowatch" if answer['error']
+  answer['result']['price']
 end
 
 usd_prices = {
