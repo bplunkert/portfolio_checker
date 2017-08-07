@@ -34,4 +34,4 @@ end
 puts "Total Portfolio USD Balance: $#{sprintf("%.2f", total_usd_balance)} USD"
 puts "Total Portfolio BTC Balance: #{sprintf("%.8f", total_btc_balance)} BTC"
 
-puts "BTC+BCH Combined Ticker Price = #{sprintf("%.2f", usd_prices['BTC'] + usd_prices['BCH'])}"
+puts "BTC+BCH Combined Ticker Price = $#{sprintf("%.2f", usd_prices['BTC'] + usd_prices['BCH'])}"
