@@ -5,21 +5,24 @@ require 'json'
 
 balances = JSON.parse(File.read('balances.json'))
 
-def fetch_and_parse(exchange, symbol)
-  answer = JSON.parse(Net::HTTP.get(URI("https://api.cryptowat.ch/markets/#{exchange}/#{symbol}usd/price")))
+def fetch_and_parse
+  answer = JSON.parse(Net::HTTP.get(URI("https://api.cryptowat.ch/markets/prices")))
   abort "don't spam cryptowatch" if answer['error']
-  answer['result']['price']
+  answer['result']
 end
 
+def extract(prices, exchange, symbol)
+  prices["#{exchange}:#{symbol}usd"]
+end
+
+prices = fetch_and_parse
 usd_prices = {
-  'BCH'  => fetch_and_parse('kraken', 'bch'),
-  'BTC'  => fetch_and_parse('gdax', 'btc'),
-  'DASH' => fetch_and_parse('kraken', 'dash'),
-  'ETH' => fetch_and_parse('gdax', 'eth'),
-  'LTC'  => fetch_and_parse('kraken', 'ltc'),
-  'NMC'  => fetch_and_parse('btce', 'nmc'),
-  'PPC'  => fetch_and_parse('btce', 'ppc'),
-  'XMR'  => fetch_and_parse('kraken', 'xmr')
+  'BCH'  => extract(prices, 'kraken', 'bch'),
+  'BTC'  => extract(prices, 'gdax', 'btc'),
+  'DASH' => extract(prices, 'kraken', 'dash'),
+  'ETH' => extract(prices, 'gdax', 'eth'),
+  'LTC'  => extract(prices, 'kraken', 'ltc'),
+  'XMR'  => extract(prices, 'kraken', 'xmr')
 }
 
 usd_balances = balances.map{|coin, coin_balance| [coin, (coin_balance * usd_prices[coin])]}.to_h
