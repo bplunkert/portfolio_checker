@@ -19,8 +19,9 @@ prices = fetch_and_parse
 usd_prices = {
   'BCH'  => extract(prices, 'kraken', 'bch'),
   'BTC'  => extract(prices, 'gdax', 'btc'),
+  'BTG'  => extract(prices, 'bitfinex', 'btg'),
   'DASH' => extract(prices, 'kraken', 'dash'),
-  'ETH' => extract(prices, 'gdax', 'eth'),
+  'ETH'  => extract(prices, 'gdax', 'eth'),
   'LTC'  => extract(prices, 'kraken', 'ltc'),
   'XMR'  => extract(prices, 'kraken', 'xmr')
 }
@@ -37,4 +38,4 @@ end
 puts "Total Portfolio USD Balance: $#{sprintf("%.2f", total_usd_balance)} USD"
 puts "Total Portfolio BTC Balance: #{sprintf("%.8f", total_btc_balance)} BTC"
 
-puts "BTC+BCH Combined Ticker Price = $#{sprintf("%.2f", usd_prices['BTC'] + usd_prices['BCH'])}"
+puts "BTC+BCH+BTG Combined Ticker Price = $#{sprintf("%.2f", usd_prices['BTC'] + usd_prices['BCH'] + usd_prices['BTG'])}"
