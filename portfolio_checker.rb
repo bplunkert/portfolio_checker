@@ -23,7 +23,8 @@ usd_prices = {
   'DASH' => extract(prices, 'kraken', 'dash'),
   'ETH'  => extract(prices, 'gdax', 'eth'),
   'LTC'  => extract(prices, 'kraken', 'ltc'),
-  'XMR'  => extract(prices, 'kraken', 'xmr')
+  'XMR'  => extract(prices, 'kraken', 'xmr'),
+  'ZEC'  => extract(prices, 'kraken', 'zec')
 }
 
 usd_balances = balances.map{|coin, coin_balance| [coin, (coin_balance * usd_prices[coin])]}.to_h
